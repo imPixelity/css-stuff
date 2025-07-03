@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3rem;
+  background-image: linear-gradient(45deg, #70115b, #1d2b69);
+  box-shadow: 0 0.2rem 0.1rem rgb(255, 126, 242);
+  color: rgb(255, 126, 242);
+}
+
+nav .logo {
+  font-family: "Leckerli One", cursive;
+  letter-spacing: 0.2rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  width: 40%;
+  justify-content: space-between;
+}
+
+nav ul li a {
+  color: rgb(255, 126, 242);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menu-toggle input {
+  position: absolute;
+  width: 28px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: rgb(255, 126, 242);
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger Animation */
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4) {
+  transform-origin: 100% 0;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+  transform: rotate(10deg) translate(-1px, -1px);
+  background-color: #ff00d4;
+}
+
+.menu-toggle input:checked ~ span:nth-child(4) {
+  transform: rotate(10deg) translate(-1px, 0);
+  background-color: #ff00d4;
+}
+
+.menu-toggle input:checked ~ span:nth-child(3) {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* Breakpoints */
+/* Tablet */
+@media screen and (max-width: 768px) {
+  nav ul {
+    width: 50%;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 576px) {
+  nav ul {
+    position: absolute;
+    width: 75%;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(45deg, #70115b, #1d2b69);
+    z-index: -1;
+    transform: translateX(100%);
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+  }
+
+  nav ul.slide {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
